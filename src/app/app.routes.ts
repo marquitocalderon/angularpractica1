@@ -3,6 +3,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ClientComponent } from './client/client.component';
 import { LayoutComponent } from './layout/layout.component';
 import { LoginComponent } from './Components/login/login.component';
+import { NotFoundComponent } from './Components/not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,12 @@ export const routes: Routes = [
             { path: '', component: ClientComponent },
         ],
         title: 'Cliente'
-    }
+    },
+
+    {
+        path: "**",
+        component: NotFoundComponent,
+        title: "Pagina No Encontrada",
+    },
 
 ];
