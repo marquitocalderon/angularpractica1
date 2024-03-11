@@ -12,12 +12,8 @@ export const routes: Routes = [
     },
 
     {
-        path: 'admin',
-        component: LayoutComponent,
-        children: [
-            { path: '', component: AdminComponent },
-        ],
-        title: 'Admin'
+        path: "admin",
+        loadChildren: () => import('./admin/admin.routes').then(ruta => ruta.ADMIN_RUTAS)
     },
     {
         path: 'cliente',
