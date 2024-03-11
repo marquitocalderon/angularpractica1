@@ -8,7 +8,7 @@ import { interfaceLogin } from './login.interface';
 })
 export class LoginService {
 
-  private urlApi = "https://backend-vercel-psi.vercel.app/auth/login"
+  private urlApi = import.meta.env.NG_APP_API + '/auth/login';
 
   constructor(private http: HttpClient) { }
 
