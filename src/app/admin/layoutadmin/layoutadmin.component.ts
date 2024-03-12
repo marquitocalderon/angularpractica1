@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { SeguridadComponent } from './seguridad/seguridad.component';
 
 @Component({
   selector: 'componente-layoutadmin',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SeguridadComponent],
   templateUrl: './layoutadmin.component.html',
   styleUrl: './layoutadmin.component.css'
 })
