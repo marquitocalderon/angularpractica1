@@ -113,7 +113,12 @@
       </div>
     </div>
     <div class="p-4">
-      <h1 class="text-lg font-bold text-gray-500 text-end">Admin / <span class="text-gray-700">Usuarios</span></h1>
+      @if (ruta === '/admin') {
+        <h1 class="text-lg font-bold text-gray-500 text-end">Dashboard  <span class="text-gray-700"></span></h1>
+      }
+      @else if (ruta === '/admin/usuarios') {
+        <h1 class="text-lg font-bold text-gray-500 text-end">Seguridad / <span class="text-gray-700">Usuarios</span></h1>
+      }
       <router-outlet></router-outlet>
     </div>
   </div>
