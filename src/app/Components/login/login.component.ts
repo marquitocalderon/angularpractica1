@@ -83,6 +83,7 @@ export class LoginComponent implements OnInit {
         }
         else {
           this.formulario.reset();
+          this.loading = false
           window.location.href = "/"
         }
       },
