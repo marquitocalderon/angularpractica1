@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from '../layout/layout.component';
 import { AdminComponent } from './admin.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { LayoutadminComponent } from './layoutadmin/layoutadmin.component';
 
 export const ADMIN_RUTAS: Routes = [
     {
         path: '',
-        component: LayoutComponent,
+        component: LayoutadminComponent,
         children: [
             { path: '', component: AdminComponent, },
             { path: 'usuarios', component: UsuariosComponent , title: 'Usuarios' },
