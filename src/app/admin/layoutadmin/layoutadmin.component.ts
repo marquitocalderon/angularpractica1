@@ -10,4 +10,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class LayoutadminComponent {
 
+  sideBardOpen: boolean = false;
+
+  clickMenu(){
+    this.sideBardOpen = !this.sideBardOpen;
+    console.log(this.sideBardOpen)
+  }
+
 }
