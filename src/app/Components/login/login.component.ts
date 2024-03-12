@@ -32,9 +32,22 @@ export class LoginComponent implements OnInit {
   }
 
   formulario = new FormGroup({
-    usuario: new FormControl("", [Validators.required, Validators.minLength(1), Validators.maxLength(16)]),
-    password: new FormControl("", [Validators.required, Validators.minLength(1), Validators.maxLength(16)])
+    usuario: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(16)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(16)])
   })
+
+  getErrorMessage(controlName: string): string {
+    const control = this.formulario.get(controlName);
+    if (control?.hasError('minlength')) {
+      return `${controlName} debe tener al menos 4 caracteres.`;
+    }
+  
+    if (control?.hasError('maxlength')) {
+      return `${controlName} debe tener al menos 16 caracteres.`;
+    }
+  
+    return '';
+  }
 
   errorEnSolicitud: any
 
