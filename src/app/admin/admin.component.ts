@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LineaComponent } from './charts/linea/linea.component';
 
+
 @Component({
   selector: 'componente-admin',
   standalone: true,
@@ -8,6 +9,7 @@ import { LineaComponent } from './charts/linea/linea.component';
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
 })
-export class AdminComponent {
+export class AdminComponent  {
+  
 
 }
