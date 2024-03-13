@@ -1,93 +1,53 @@
-<div>
-  <label for="tw-modal"
-    class="bg-transparent hover:bg-blue-900 text-blue-700 font-semibold hover:text-white py-2 px-6 border border-blue-500 hover:border-transparent rounded cursor-pointer">
-    Agregar
-</label>
+<button class="w-full px-8 py-2 border-blue-700 text-black border hover:bg-blue-900 hover:text-white" (click)="openModal()">Agregar</button>
 
-<input type="checkbox" id="tw-modal" class="peer fixed appearance-none opacity-0">
-
-<label for="tw-modal"
-    class="pointer-events-none invisible fixed inset-0 flex cursor-pointer items-center justify-center overflow-hidden overscroll-contain bg-slate-700/30 opacity-0 transition-all duration-200 ease-in-out peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100 z-50">
-    <div
-        class="max-h-[calc(100vh - 5em)] h-fit max-w-lg scale-90 overflow-y-auto overscroll-contain rounded-sm bg-white text-black shadow-2xl transition">
-        <article class="rounded-lg border border-gray-100 bg-white p-4 shadow-sm transition hover:shadow-lg sm:p-6">
-            <div class="mx-auto max-w-screen-xl px-4  sm:px-6 lg:px-8">
-                <div class="mx-auto max-w-lg text-center">
-                  <h1 class="text-2xl font-bold sm:text-3xl">Agregar Usuario</h1>
-              
-                  <p class="mt-4 text-gray-500">
-                    Por favor, completa todos los campos excepto si no tienes una imagen.
-                  </p>
+@if (isModalOpen) {
+    <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!--
+          Background backdrop, show/hide based on modal state.
+      
+          Entering: "ease-out duration-300"
+            From: "opacity-0"
+            To: "opacity-100"
+          Leaving: "ease-in duration-200"
+            From: "opacity-100"
+            To: "opacity-0"
+        -->
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+      
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <!--
+              Modal panel, show/hide based on modal state.
+      
+              Entering: "ease-out duration-300"
+                From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                To: "opacity-100 translate-y-0 sm:scale-100"
+              Leaving: "ease-in duration-200"
+                From: "opacity-100 translate-y-0 sm:scale-100"
+                To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            -->
+            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                <div class="sm:flex sm:items-start">
+                  <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                    <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                    </svg>
+                  </div>
+                  <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                    <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Deactivate account</h3>
+                    <div class="mt-2">
+                      <p class="text-sm text-gray-500">Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.</p>
+                    </div>
+                  </div>
                 </div>
-              
-                <form action="#" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
-                    <div>
-                        <label for="Username" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                            <input type="text" id="Username" class="peer w-full border-none p-4 bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Username" />
-                            <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-sm">
-                                Username
-                            </span>
-                        </label>
-                    </div>
-                    
-              
-                  <div>
-
-              
-                    <div class="relative">
-                        <div>
-                            <label for="password" class="relative block rounded-md border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                <input type="text" id="password" autocomplete="new-password" class="peer w-[90%] border-none p-4 bg-transparent placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0" placeholder="Username" />
-                                <span class="pointer-events-none absolute start-2.5 top-0 -translate-y-1/2 bg-white p-0.5 text-sm text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-0 peer-focus:text-sm">
-                                    Password
-                                </span>
-                            </label>
-                        </div>
-                      
-                        <span class="absolute inset-y-0 right-0 grid place-content-center pr-5">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="w-6 h-6 text-gray-400"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                              />
-                            </svg>
-                        </span>
-                    </div>
-                    
-                  </div>
-              
-                  <div class="flex items-center justify-between">
-                    <p class="text-sm text-gray-500">
-                      No account?
-                      <a class="underline" href="#">Sign up</a>
-                    </p>
-              
-                    <button
-                      type="submit"
-                      class="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
-                    >
-                      Sign in
-                    </button>
-                  </div>
-                </form>
               </div>
-        </article>
-    </div>
-</label>
-
-<!-- Aquí debajo coloca los elementos que deseas que estén detrás del modal -->
-</div>
+              <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <button type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto">Registrar</button>
+                <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" (click)="closeModal()">Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+}

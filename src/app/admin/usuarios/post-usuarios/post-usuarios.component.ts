@@ -8,5 +8,22 @@ import { Component } from '@angular/core';
   styleUrl: './post-usuarios.component.css'
 })
 export class PostUsuariosComponent {
+  formData: any = {};
+  estaOjito : boolean = false;
+
+  clickOjo () : void {
+    this.estaOjito = !this.estaOjito;
+  }
+  
+  isModalOpen = false;
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
 
 }
