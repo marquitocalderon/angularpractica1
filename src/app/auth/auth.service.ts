@@ -6,7 +6,7 @@ import * as jwt from 'jwt-decode';
 })
 export class AuthService {
 
-  tieneToken() {
+  decodeToken() {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = jwt.jwtDecode(token) as any;
@@ -15,6 +15,18 @@ export class AuthService {
       return false;
     }
   }
+
+  tieneToken() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      return token 
+    } else {
+      return false;
+    }
+  }
+
+
+  
 
   constructor() { }
 }

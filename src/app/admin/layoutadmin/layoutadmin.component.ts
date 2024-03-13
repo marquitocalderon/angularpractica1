@@ -24,7 +24,6 @@ export class LayoutadminComponent implements OnInit   {
 
   ngOnInit() {
     const nombreRuta = this.router.url;
-    console.log(nombreRuta);
     this.ruta = nombreRuta
 }
 

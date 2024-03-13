@@ -6,7 +6,7 @@ export const guardGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const perfilRequerido = route.data['permisoRol'];
-  const decodedToken = authService.tieneToken();
+  const decodedToken = authService.decodeToken();
 
   if (decodedToken) {
     if (decodedToken.role.includes('ADMIN') && perfilRequerido.includes('ADMIN')) {
