@@ -64,21 +64,22 @@ export class LoginComponent implements OnInit {
 
         if (decodedToken) {
 
-          if (decodedToken.role = "ADMIN") {
+          if (decodedToken.role === "ADMIN") {
             this.formulario.reset();
-            this.loading = false
-            window.location.href = "/admin"
+            this.loading = false;
+            window.location.href = "/admin";
           }
-          else if (decodedToken.role === "USUARIO") {
+          else if (decodedToken.role === 'USUARIO') {
             this.formulario.reset();
-            this.loading = false
-            window.location.href = "/cliente"
+            this.loading = false;
+            window.location.href = "/cliente";
           }
           else {
             this.formulario.reset();
-            this.loading = false
-            window.location.href = "/"
+            this.loading = false;
+            window.location.href = "/";
           }
+          
 
         }
         else {
