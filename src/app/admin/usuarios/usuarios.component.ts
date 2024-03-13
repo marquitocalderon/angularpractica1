@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiservicioService } from '../../api/apiservicio.service';
+import { PostUsuariosComponent } from './post-usuarios/post-usuarios.component';
 
 @Component({
   selector: 'componente-usuarios',
   standalone: true,
-  imports: [],
+  imports: [PostUsuariosComponent],
   templateUrl: './usuarios.component.html',
   styleUrl: './usuarios.component.css'
 })
