@@ -31,8 +31,11 @@ export class PostUsuariosComponent implements OnInit {
 
   imageUrl: string | ArrayBuffer | null = null;
 
+  imagenParaEnviar: File | null = null;
+
   onFileSelected(event: any) {
     const file = event.target.files[0];
+    this.imagenParaEnviar = file
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -54,7 +57,7 @@ export class PostUsuariosComponent implements OnInit {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.tieneToken()}`, // Invoke the method to get the token
     });
-    this.dataService.getApi(headers, url).subscribe({
+    this.dataService.getApi( url).subscribe({
       next: (data) =>{
        this.perfiles = data
       },
@@ -73,8 +76,25 @@ export class PostUsuariosComponent implements OnInit {
     perfiles: new FormControl(''),
   });
 
-  enviarDatos(): void {
+  enviarDatos() {
       const formData = new FormData();
-     console.log(formData)
+      formData.append('usuario', this.form.get('usuario')?.value);
+      formData.append('password', this.form.get('password')?.value);
+      formData.append('idperfil', this.form.get('perfiles')?.value);
+      if (this.imagenParaEnviar) { // Verifica si hay un archivo seleccionado
+        formData.append('imagen', this.imagenParaEnviar);
+      }
+
+      const url = import.meta.env.NG_APP_API + '/usuarios';
+
+      this.dataService.postApi( url, formData).subscribe({
+        next: (response) => {
+         window.location.reload();
+        },
+        error: (error) => {
+          console.error('Error:', error);
+          // Manejo de errores
+        }
+      });
   }
 }

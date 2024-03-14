@@ -22,10 +22,7 @@ export class UsuariosComponent implements OnInit {
 
   getData(): void {
     const url = import.meta.env.NG_APP_API + '/usuarios';
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.authService.tieneToken()}`, // Invoke the method to get the token
-    });
-    this.dataService.getApi(headers, url).subscribe({
+    this.dataService.getApi(url).subscribe({
       next: (data) =>{
        this.arregloGet = data
       },
