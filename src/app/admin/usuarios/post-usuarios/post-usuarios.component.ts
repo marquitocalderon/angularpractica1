@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from '../../../auth/auth.service';
+import { ApiservicioService } from '../../../api/apiservicio.service';
+import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'componente-post-usuarios',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './post-usuarios.component.html',
   styleUrl: './post-usuarios.component.css'
 })
-export class PostUsuariosComponent {
+export class PostUsuariosComponent implements OnInit {
   formData: any = {};
   estaOjito : boolean = false;
 
@@ -38,5 +42,39 @@ export class PostUsuariosComponent {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  constructor(private dataService: ApiservicioService) { }
+  authService = inject(AuthService);
+
+  perfiles: any[] = []
+
+  getData(): void {
+    const url = import.meta.env.NG_APP_API + '/perfiles';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.tieneToken()}`, // Invoke the method to get the token
+    });
+    this.dataService.getApi(headers, url).subscribe({
+      next: (data) =>{
+       this.perfiles = data
+      },
+      error: (atrapar)=>{
+        console.log(atrapar)
+      }
+    })
+  }
+  ngOnInit(): void {
+    this.getData();
+  }
+
+  form: FormGroup = new FormGroup({
+    usuario: new FormControl(''),
+    password: new FormControl(''),
+    perfiles: new FormControl(''),
+  });
+
+  enviarDatos(): void {
+      const formData = new FormData();
+     console.log(formData)
   }
 }
