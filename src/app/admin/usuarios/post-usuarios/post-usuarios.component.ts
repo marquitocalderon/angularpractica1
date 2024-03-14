@@ -76,14 +76,15 @@ export class PostUsuariosComponent implements OnInit {
     perfiles: new FormControl(''),
   });
 
-  enviarDatos() {
-      const formData = new FormData();
-      formData.append('usuario', this.form.get('usuario')?.value);
-      formData.append('password', this.form.get('password')?.value);
-      formData.append('idperfil', this.form.get('perfiles')?.value);
-      if (this.imagenParaEnviar) { // Verifica si hay un archivo seleccionado
-        formData.append('imagen', this.imagenParaEnviar);
-      }
+  enviarDatos(e:any) {
+      const formData = new FormData(e.target);
+      // formData.append('usuario', this.form.get('usuario')?.value);
+      // formData.append('password', this.form.get('password')?.value);
+      // formData.append('idperfil', this.form.get('perfiles')?.value);
+      // if (this.imagenParaEnviar) { // Verifica si hay un archivo seleccionado
+      //   formData.append('imagen', this.imagenParaEnviar);
+      // }
+
 
       const url = import.meta.env.NG_APP_API + '/usuarios';
 
