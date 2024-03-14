@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ApiservicioService } from '../../api/apiservicio.service';
 import { PostUsuariosComponent } from './post-usuarios/post-usuarios.component';
+import { HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'componente-usuarios',
@@ -16,13 +18,23 @@ export class UsuariosComponent implements OnInit {
   elementosPorPagina: number = 4;
 
   constructor(private dataService: ApiservicioService) { }
+  authService = inject(AuthService);
 
   getData(): void {
-    this.dataService.getData().subscribe(data => {
-      this.arregloGet = data;
+    const url = import.meta.env.NG_APP_API + '/usuarios';
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.authService.tieneToken()}`, // Invoke the method to get the token
     });
+    this.dataService.getApi(headers, url).subscribe({
+      next: (data) =>{
+       this.arregloGet = data
+      },
+      error: (atrapar)=>{
+        console.log(atrapar)
+      }
+    })
   }
-
+  
   ngOnInit(): void {
     this.getData();
   }

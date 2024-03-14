@@ -25,5 +25,18 @@ export class PostUsuariosComponent {
     this.isModalOpen = false;
   }
 
+  imageUrl: string | ArrayBuffer | null = null;
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (typeof e.target?.result === 'string') {
+          this.imageUrl = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  }
 }
