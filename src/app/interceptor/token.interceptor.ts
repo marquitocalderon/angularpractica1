@@ -9,7 +9,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = tokenservice.tieneToken();
 
    // Lista de rutas que no requieren autorización
-   const urlsSinAutorizacion: string[] = ['/auth/login',];
+   const urlsSinAutorizacion: string[] = ['/auth/login', '/admin/word'];
 
    // Verificar si la URL actual está en la lista de rutas sin autorización
    if (urlsSinAutorizacion.some(url => req.url.includes(url))) {

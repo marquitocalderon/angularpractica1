@@ -1,0 +1,24 @@
+
+
+<fieldset class="border border-gray-300 p-4 rounded-lg">
+    <legend class="text-lg font-bold text-gray-800 mb-2">FORMULARIO DEL WORD</legend>
+    <div>
+        <form [formGroup]="formulario" (ngSubmit)="sendForm($event)"  >
+            <div class="mb-4">
+                <label for="nombre" class="block text-gray-700 font-bold mb-2">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" formControlName="nombre" (change)="nombreChange($event)" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="edad" class="block text-gray-700 font-bold mb-2">Edad:</label>
+                <input type="text" id="edad" name="edad" formControlName="edad" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="direccion" class="block text-gray-700 font-bold mb-2">Dirección:</label>
+                <textarea id="direccion" name="direccion" formControlName="direccion" rows="3" class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Enviar</button>
+            </div>
+        </form>
+    </div>
+  </fieldset>
